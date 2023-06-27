@@ -1251,7 +1251,8 @@ class UcsImcConfigManager(GenericUcsConfigManager):
                     # We now need to get the new IP address from the configuration
                     if config.admin_networking[0].management_ipv4_address:
                         self.parent.target = config.admin_networking[0].management_ipv4_address
-
+                    else if config.admin_networking[0].management_ipv6_address:
+                        self.parent.target = config.admin_networking[0].management_ipv6_address
                     # We wait for IMC to come back in case IP Add or NIC Mode Changed
                     self.logger(message="Waiting up to 90 seconds for UCS IMC to come back")
                     time.sleep(40)
